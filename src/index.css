@@ -16,3 +16,7 @@
     src: local("McFont"), url(./fonts/McFont.otf) format("opentype");
   }
 }
+
+b {
+  color: rgba(229, 231, 235, var(--tw-text-opacity));
+}

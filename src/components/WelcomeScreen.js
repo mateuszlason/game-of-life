@@ -2,7 +2,7 @@ import { faThLarge } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
-import WikiButton from "./common/WikiButton";
+import WikiButton from "./WikiButton";
 
 const square = (
   <FontAwesomeIcon
@@ -30,34 +30,33 @@ const WelcomeScreen = () => {
           There are only 4 rules :
         </h2>
         <ul className="mt-3 ml-2 sm:px-6 md:leading-relaxed md:px-10 2xl:px-20 text-gray-400 text-lg md:text-xl xl:text-xl 2xl:leading-relaxed space-y-4">
-          <li className="inline-flex items-baseline">
+          <li className="inline-flex font-base items-baseline">
             {" "}
             {square}
             <p>
-              Any live cell with <b className="text-gray-300">fewer than two</b>{" "}
-              live neighbours dies, as if by underpopulation.
+              Any live cell with <b>fewer than two</b> live neighbours dies, as
+              if by underpopulation.
             </p>
           </li>{" "}
           <li className="inline-flex items-baseline">
             {square}
             <p>
-              Any live cell with <b className="text-gray-300">two or three</b>{" "}
-              live neighbours lives on to the next generation.
+              Any live cell with <b>two or three</b> live neighbours lives on to
+              the next generation.
             </p>
           </li>
           <li className="inline-flex items-baseline">
             {square}
             <p>
-              Any live cell with{" "}
-              <b className="text-gray-300">more than three</b> live neighbours
-              dies, as if by overpopulation.
+              Any live cell with <b>more than three</b> live neighbours dies, as
+              if by overpopulation.
             </p>
           </li>
           <li className="inline-flex items-baseline">
             {square}
             <p>
-              Any dead cell with <b className="text-gray-300">exactly three</b>{" "}
-              live neighbours becomes a live cell, as if by reproduction.
+              Any dead cell with <b>exactly three</b> live neighbours becomes a
+              live cell, as if by reproduction.
             </p>
           </li>
         </ul>

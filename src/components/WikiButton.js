@@ -3,12 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const WikiButton = ({ className, text }) => {
+const WikiButton = ({ article, className, text }) => {
   return (
     <Link
       to={{
-        pathname:
-          "https://en.wikipedia.org/w/index.php?title=Conway%27s_Game_of_Life&oldid=1014218578",
+        pathname: `https://en.wikipedia.org/w/index.php?title=Conway%27s_Game_of_Life&oldid=1014218578${article}`,
       }}
       className={className}
       target="_blank"
