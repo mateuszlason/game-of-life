@@ -185,7 +185,7 @@ const GameOfLife = () => {
           </form>
         </div>
         <div className="flex flex-col items-center justify-around bg-gradient-to-r from-gray-500 to-gray-800">
-          <h1 className=" font-header text-5xl">GAME of LIFE</h1>
+          <h1 className=" font-header text-5xl text-center">GAME of LIFE</h1>
 
           <div className=" text-gray-900 grid grid-cols-3 gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
             <button
@@ -264,7 +264,7 @@ const GameOfLife = () => {
       {tutorialToggle && <Tutorial onClick={handleToggle} />}
       <TutorialButton
         className={
-          "fixed flex flex-col cursor-pointer items-center bottom-8 right-5 text-gray-300 font-bold"
+          "fixed flex flex-col cursor-pointer items-center bottom-8 right-12 text-gray-300 font-bold"
         }
         text="Tutorial"
         onClick={() => setTutorialToggle(!tutorialToggle)}
