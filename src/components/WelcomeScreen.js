@@ -74,12 +74,12 @@ const WelcomeScreen = () => {
       <video
         className="z-0 fixed hidden sm:block"
         id="background"
-        poster="/poster.jpg"
+        poster="/game-of-life/poster.jpg"
         autoPlay
         muted
         loop
       >
-        <source src="/background.mp4" type="video/mp4"></source>
+        <source src="/game-of-life/background.mp4" type="video/mp4"></source>
       </video>
     </div>
   );

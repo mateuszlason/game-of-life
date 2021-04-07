@@ -141,7 +141,7 @@ const GameOfLife = () => {
 
   return (
     <div
-      style={{ backgroundImage: `url(/poster.jpg)` }}
+      style={{ backgroundImage: `url(/game-of-life/poster.jpg)` }}
       className="flex flex-col font-text bg-cover bg-fixed bg-center text-white min-h-screen min-w-full"
     >
       <div className="backdrop-filter backdrop-blur-md grid grid-cols-3 w-full h-48 2xl:h-52">
