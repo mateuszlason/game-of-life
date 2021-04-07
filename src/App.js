@@ -6,9 +6,9 @@ const App = () => {
   return (
     <>
       <Switch>
-        <Route path="/" exact component={WelcomeScreen} />
-        <Route path="/game" component={GameOfLife} />
-        <Redirect to="/" />
+        <Route path="/game-of-life" exact component={WelcomeScreen} />
+        <Route path="/game-of-life/play" component={GameOfLife} />
+        <Redirect to="/game-of-life" />
       </Switch>
     </>
   );

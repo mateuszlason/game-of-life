@@ -62,7 +62,7 @@ const WelcomeScreen = () => {
         </ul>
         <Link
           className="justify-items-end mb-3 w-1/2 2xl:w-1/3 h-12 lg:mt-2"
-          to="/game"
+          to="/game-of-life/play"
         >
           {" "}
           <button className="transition duration-150 transform hover:translate-y-1 hover:scale-105 w-full h-full text-xl 2xl:text-2xl bg-gradient-to-r from-gray-500 to-gray-800">
