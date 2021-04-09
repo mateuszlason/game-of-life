@@ -17,6 +17,19 @@
   }
 }
 
-b {
-  color: rgba(229, 231, 235, var(--tw-text-opacity));
+@layer base {
+  b {
+    @apply text-gray-200;
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  min-height: 100vh;
+  height: 100vh;
 }

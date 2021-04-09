@@ -9,7 +9,7 @@ const square = (
     className="align-bottom mr-4 md:mr-10 text-gray-100"
     icon={faThLarge}
     size="xs"
-    listitem
+    listitem="true"
   />
 );
 

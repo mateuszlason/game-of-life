@@ -8,7 +8,7 @@ const App = () => {
       <Switch>
         <Route path="/game-of-life" exact component={WelcomeScreen} />
         <Route path="/game-of-life/play" component={GameOfLife} />
-        <Redirect to="/game-of-life" />
+        <Redirect exact to="/game-of-life" />
       </Switch>
     </>
   );

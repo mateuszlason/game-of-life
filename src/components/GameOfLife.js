@@ -17,9 +17,9 @@ const GameOfLife = () => {
   const [tutorialToggle, setTutorialToggle] = useState(true);
   const [values, handleChange] = useForm({
     cellSize: 20,
-    gridWidth: "",
-    gridHeight: "",
-    progression: 150,
+    gridWidth: 50,
+    gridHeight: 30,
+    speed: 150,
   });
 
   const rowsNum = dimensions.height;
@@ -46,18 +46,28 @@ const GameOfLife = () => {
     [-1, 0],
   ];
 
+  // working on random cell color
+  //   const colors = [
+  //     "bg-red-600",
+  //     "bg-blue-600",
+  //     "bg-white",
+  //     "bg-greed-600",
+  //     "bg-yellow-600",
+  //   ];
+  //  const randomColor = colors[Math.floor(Math.random() * 5)];
+
   const renderGrid = () => {
     // "x" is row index
     // "y" is column index
     return grid.map((rows, x) =>
       rows.map((cols, y) => (
         <div
-          className="w-full h-full border border-t-0 border-l-0 border-gray-700"
+          className={
+            "w-full h-full border border-t-0 border-l-0 border-gray-700 " +
+            (grid[x][y] ? "bg-gray-200" : "")
+          }
           key={`${x}-${y}`}
           onClick={() => setLivingCell(x, y)}
-          style={{
-            backgroundColor: grid[x][y] ? "white" : undefined,
-          }}
         />
       ))
     );
@@ -95,20 +105,21 @@ const GameOfLife = () => {
   const beginGeneration = useCallback(() => {
     if (!continuanceRef.current) return;
 
+    //producing copy of grid which we can mutate, iterating through each cell
     setGrid((g) => {
       return produce(g, (genCopy) => {
         for (let x = 0; x < rowsNum; x++) {
           for (let y = 0; y < colsNum; y++) {
             let neighbours = 0;
-
+            //adding all possible coordinates from 'operations' array to given cell to find living neighbours
             operations.forEach(([i, j]) => {
               const newX = x + i;
               const newY = y + j;
-              //checking for valid index, only then adding neighbours
+              //checking for valid index (so it doesn't exceed the dimensions of the grid ), only then adding neighbours
               if (newX >= 0 && newX < rowsNum && newY >= 0 && newY < colsNum)
                 neighbours += g[newX][newY];
             });
-
+            // checking Conway's rules of the Game - killing/reviving the cell
             if (neighbours < 2 || neighbours > 3) genCopy[x][y] = 0;
             else if (g[x][y] === 0 && neighbours === 3) genCopy[x][y] = 1;
           }
@@ -119,6 +130,7 @@ const GameOfLife = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    //setting new dimensions for grid
     setGrid(
       Array(Number(values.gridHeight)).fill(
         Array(Number(values.gridWidth)).fill(0)
@@ -134,7 +146,8 @@ const GameOfLife = () => {
   };
 
   useEffect(() => {
-    const handle = setInterval(beginGeneration, values.progression);
+    //setting game's speed (duration of each generation)
+    const handle = setInterval(beginGeneration, values.speed);
 
     return () => clearInterval(handle);
   }, [beginGeneration]);
@@ -142,7 +155,7 @@ const GameOfLife = () => {
   return (
     <div
       style={{ backgroundImage: `url(/game-of-life/poster.jpg)` }}
-      className="flex flex-col font-text bg-cover bg-fixed bg-center text-white min-h-screen min-w-full"
+      className="flex flex-col bg-black font-text bg-cover bg-fixed bg-center text-white min-h-screen h-full min-w-full"
     >
       <div className="backdrop-filter backdrop-blur-md grid grid-cols-3 w-full h-48 2xl:h-52">
         <div className="w-full mt-4">
@@ -156,6 +169,7 @@ const GameOfLife = () => {
           >
             <div className="font-semibold my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
               <label htmlFor="gridHeight">Height:</label>
+
               <input
                 value={values.gridHeight}
                 name="gridHeight"
@@ -187,9 +201,12 @@ const GameOfLife = () => {
         <div className="flex flex-col items-center justify-around bg-gradient-to-r from-gray-500 to-gray-800">
           <h1 className=" font-header text-5xl text-center">GAME of LIFE</h1>
 
-          <div className=" text-gray-900 grid grid-cols-3 gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
+          <div className="grid grid-cols-3 gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
             <button
-              className="flex flex-col hover: text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:bg-gray-800 focus:outline-none hover:shadow-inner border-white justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
+              className={
+                "flex flex-col text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200 justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36 " +
+                (continuance ? "bg-gray-800" : "")
+              }
               onClick={handleBegining}
             >
               {" "}
@@ -206,14 +223,14 @@ const GameOfLife = () => {
               )}
             </button>
             <button
-              className="flex flex-col hover: text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none hover:shadow-inner border-white justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-col text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200 justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
               onClick={handleObliviate}
             >
               <FontAwesomeIcon icon={faMeteor} size="3x" />
               Obliviate
             </button>
             <button
-              className="flex flex-col hover: text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none hover:shadow-inner border-white justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-col text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200 justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
               onClick={handleRandomize}
             >
               {" "}
@@ -239,11 +256,11 @@ const GameOfLife = () => {
             />
           </div>
           <div className="font-semibold my-2 2xl:text-xl flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
-            <label htmlFor="progression">Speed:</label>
+            <label htmlFor="speed">Speed:</label>
             <input
-              value={values.progression}
-              name="progression"
-              id="progression"
+              value={values.speed}
+              name="speed"
+              id="speed"
               type="number"
               onChange={handleChange}
               className="ml-2 bg-gray-500 text-right focus:outline-none md:w-1/2"
@@ -253,18 +270,20 @@ const GameOfLife = () => {
       </div>
       <div className="bg-gradient-to-r from-gray-500 to-gray-800 w-full h-2"></div>
 
-      <div
-        className="mt-10 mx-auto grid border border-b-0 border-r-0 border-gray-700 w-min"
-        style={{
-          grid: `repeat(${dimensions.height}, ${values.cellSize}px)/ repeat(${dimensions.width}, ${values.cellSize}px)`,
-        }}
-      >
-        {renderGrid()}
+      <div className="overflow-x-auto min-h-full flex-1 inline-block mt-8 mx-8">
+        <div
+          className="grid border border-b-0 border-r-0 border-gray-700 w-max mx-auto"
+          style={{
+            grid: `repeat(${dimensions.height}, ${values.cellSize}px)/ repeat(${dimensions.width}, ${values.cellSize}px)`,
+          }}
+        >
+          {renderGrid()}
+        </div>
       </div>
       {tutorialToggle && <Tutorial onClick={handleToggle} />}
       <TutorialButton
         className={
-          "fixed flex flex-col cursor-pointer items-center bottom-8 right-12 text-gray-300 font-bold"
+          "transition-all fixed flex flex-col cursor-pointer items-center bottom-8 right-12 text-gray-300 font-bold"
         }
         text="Tutorial"
         onClick={() => setTutorialToggle(!tutorialToggle)}
@@ -279,5 +298,4 @@ const GameOfLife = () => {
     </div>
   );
 };
-
 export default GameOfLife;

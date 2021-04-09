@@ -1,5 +1,11 @@
 module.exports = {
-  purge: [],
+  purge: [
+    "./src/components/GameOfLife.js",
+    "./src/components/Tutorial.js",
+    "./src/components/TutorialButton.js",
+    "./src/components/WelcomeScreen.js",
+    "./src/components/WikiButton.js",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
