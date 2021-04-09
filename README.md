@@ -1,3 +1,5 @@
+![cover](https://mateuszlason.github.io/game-of-life/og-gameoflife.jpg)
+
 # Conway's Game of Life
 
 ---
