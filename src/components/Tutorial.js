@@ -4,7 +4,7 @@ import React from "react";
 
 const square = (
   <FontAwesomeIcon
-    className="align-bottom mr-4 md:mr-10 text-gray-100"
+    className="hidden md:block align-bottom mr-4 md:mr-10 text-gray-100"
     icon={faThLarge}
     size="xs"
     listitem="true"
@@ -13,10 +13,10 @@ const square = (
 
 const Tutorial = ({ onClick }) => {
   return (
-    <div className="min-h-full font-text min-w-full flex justify-center items-center z-20 absolute backdrop-filter backdrop-blur-sm">
-      <div className="fixed overflow-y-auto z-30 w-full md:w-4/5 lg:w-1/2 h-full 2xl:h-3/4 flex flex-col lg:justify-around items-center p-3 opacity-90 bg-black border-gray-900 border-8 border-opacity-50 rounded-md">
-        <h2 className="mb-5 lg:mb-0 text-2xl 2xl:text-4xl">Tutorial</h2>
-        <ul className="text-sm 2xl:text-lg font-bold 2xl:font-base text-gray-400 px-1 md:px-3 lg:px-6 space-y-5 lg:space-y-3 2xl:space-y-5 leading-relaxed">
+    <div className="min-h-screen overflow-hidden font-text min-w-full flex justify-center items-center z-20 fixed backdrop-filter backdrop-blur-sm">
+      <div className="fixed overflow-y-auto z-30 w-full md:w-4/5 lg:w-3/5 xl:w-1/2 h-full lg:h-5/6 xl:h-3/4 flex flex-col lg:justify-around items-center p-3 opacity-90 bg-black border-gray-900 border-2 md:border-8 border-opacity-50 rounded-md">
+        <h2 className="my-5 lg:m-0 text-2xl 2xl:text-4xl">Tutorial</h2>
+        <ul className="text-sm text-justify xl:text-base 2xl:text-lg font-bold text-gray-400 px-2 md:px-3 lg:px-6 space-y-5 lg:space-y-3 2xl:space-y-5 leading-relaxed">
           <li className="inline-flex items-baseline">
             {square}
             <p>
