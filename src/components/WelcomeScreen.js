@@ -15,15 +15,15 @@ const square = (
 
 const WelcomeScreen = () => {
   return (
-    <div className="text-white fixed text-justify text-xl sm:font-text flex justify-center items-center z-0 h-screen w-full bg-black">
-      <div className="overflow-y-auto lg:w-2/3 xl:w-2/3 2xl:w-3/5 2xl:h-5/6 relative flex p-3 opacity-90 flex-col justify-between 2xl:justify-around items-center h-full z-10 bg-black border-gray-900 border-8 border-opacity-50 rounded-md">
+    <div className="text-white fixed overflow-hidden text-justify text-xl sm:font-text flex justify-center items-center z-0 min-h-screen h-screen w-full bg-black">
+      <div className="overflow-y-auto lg:overflow-visible h-screen w-screen px-3 pt-8 pb-16 lg:p-3 lg:w-2/3 xl:w-2/3 2xl:w-3/5 2xl:h-5/6 fixed flex opacity-90 flex-col lg:justify-around items-center z-10 bg-black border-gray-900 border-8 border-opacity-50 rounded-md">
         <WikiButton
           text="Wiki article"
           className={
             "text-gray-300 cursor-pointer w-16 h-16 absolute inset-0 lg:inset-3 2xl:inset-8 flex flex-col justify-center items-center sm:w-28 sm:h-28"
           }
         />
-        <h1 className="text-center font-header my-8 text-4xl sm:text-5xl xl:text-6xl">
+        <h1 className="text-center font-header mt-12 mb-4 text-4xl sm:text-5xl xl:text-6xl">
           GAME of LIFE
         </h1>
         <h2 className="text-2xl xl:text-3xl 2xl:text-3xl mt-5">
