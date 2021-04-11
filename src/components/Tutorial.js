@@ -13,7 +13,7 @@ const square = (
 
 const Tutorial = ({ onClick }) => {
   return (
-    <div className="min-h-screen overflow-hidden font-text min-w-full flex justify-center items-center z-20 fixed backdrop-filter backdrop-blur-sm">
+    <div className="min-h-screen font-text min-w-full flex justify-center items-center z-20 fixed backdrop-filter backdrop-blur-sm">
       <div className="fixed overflow-y-auto z-30 w-full md:w-4/5 lg:w-3/5 xl:w-1/2 h-full lg:h-5/6 xl:h-3/4 flex flex-col lg:justify-around items-center p-3 opacity-90 bg-black border-gray-900 border-2 md:border-8 border-opacity-50 rounded-md">
         <h2 className="my-5 lg:m-0 text-2xl 2xl:text-4xl">Tutorial</h2>
         <ul className="text-sm text-justify xl:text-base 2xl:text-lg font-bold text-gray-400 px-2 md:px-3 lg:px-6 space-y-5 lg:space-y-3 2xl:space-y-5 leading-relaxed">
@@ -59,12 +59,12 @@ const Tutorial = ({ onClick }) => {
           </p>
         </ul>
         <button
-          className="mt-5 lg:mt-0 bg-gradient-to-r 2xl:font-bold from-gray-500 to-gray-800 focus:outline-none py-2 2xl:py-3 w-2/3 xl:w-3/5 2xl:w-1/2"
+          className="my-5 lg:my-0 bg-gradient-to-r 2xl:font-bold from-gray-500 to-gray-800 focus:outline-none py-2 2xl:py-3 w-2/3 xl:w-3/5 2xl:w-1/2"
           onClick={onClick}
         >
           Got it!
         </button>
-        <div className="absolute h-8 w-8 md:border-4 md:border-l-0 md:border-t-0 border-white z-30 bottom-2 right-2"></div>
+        <div className="absolute h-8 w-8 lg:border-4 lg:border-l-0 lg:border-t-0 border-white z-30 bottom-2 right-2"></div>
       </div>
     </div>
   );

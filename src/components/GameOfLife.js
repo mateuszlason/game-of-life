@@ -6,7 +6,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import produce from "immer";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+} from "react";
 import { useForm } from "../utils/useForm";
 import Tutorial from "./Tutorial";
 import TutorialButton from "./TutorialButton";
@@ -56,9 +62,12 @@ const GameOfLife = () => {
   //   ];
   //  const randomColor = colors[Math.floor(Math.random() * 5)];
 
-  const renderGrid = () => {
+  const renderGrid = useCallback(() => {
     // "x" is row index
     // "y" is column index
+
+    console.log("hehe");
+
     return grid.map((rows, x) =>
       rows.map((cols, y) => (
         <div
@@ -71,7 +80,10 @@ const GameOfLife = () => {
         />
       ))
     );
-  };
+  }, [grid]);
+
+  // using memoized grid version, so it does not re-render without actual change
+  const newGrid = useMemo(() => renderGrid(), [renderGrid]);
 
   const setLivingCell = (x, y) => {
     const newGen = produce(grid, (genCopy) => {
@@ -155,19 +167,22 @@ const GameOfLife = () => {
   return (
     <div
       style={{ backgroundImage: `url(/game-of-life/poster.jpg)` }}
-      className="flex flex-col relative bg-black font-text bg-cover bg-fixed bg-center text-white min-h-screen h-full min-w-full"
+      className={
+        "flex flex-col relative bg-black font-text bg-cover pb-8 bg-fixed bg-center text-white min-h-screen min-w-full " +
+        (tutorialToggle ? "h-screen overflow-hidden" : "h-full")
+      }
     >
-      <div className="overflow-x-auto backdrop-filter backdrop-blur-md grid grid-cols-3 w-full h-32 md:h-48 2xl:h-52">
-        <div className="w-full mt-2 md:mt-4">
+      <div className="overflow-x-auto backdrop-filter backdrop-blur-md grid grid-cols-9 w-full h-32 lg:h-48 2xl:h-52">
+        <div className="w-full flex flex-col items-center mt-2 lg:mt-4 cols-start-1 col-span-4 xs:col-span-3">
           {" "}
-          <h2 className="text-xl md:text-2xl 2xl:text-3xl mb-1 md:mb-2 text-center">
+          <h2 className="text-xl lg:text-2xl 2xl:text-3xl mb-1 lg:mb-2 text-center">
             World size :
           </h2>
           <form
-            className="w-full flex flex-col items-center text-sm md:text-base 2xl:text-xl"
+            className="w-5/6 xs:w-2/3 xl:w-3/5 2xl:w-1/2 flex flex-col text-sm lg:text-base 2xl:text-xl"
             onSubmit={handleSubmit}
           >
-            <div className="font-semibold my-1 md:my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+            <div className="font-semibold my-1 lg:my-2 flex flex-row justify-between">
               <label htmlFor="gridHeight">Height:</label>
 
               <input
@@ -179,7 +194,7 @@ const GameOfLife = () => {
                 className="bg-gray-500 text-right w-1/2 focus:outline-none"
               />
             </div>
-            <div className="font-semibold my-1 md:my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+            <div className="font-semibold my-1 lg:my-2 flex flex-row justify-between">
               <label htmlFor="gridWidth">Width:</label>
               <input
                 value={values.gridWidth}
@@ -191,23 +206,23 @@ const GameOfLife = () => {
               />
             </div>
             <button
-              className="mt-1 md:mt-2 bg-gradient-to-r focus:outline-none font-bold from-gray-500 to-gray-800 px-6 py-0.5 md:py-1 w-2/3 xl:w-3/5 2xl:w-1/2"
+              className="mt-1 lg:mt-2 bg-gradient-to-r focus:outline-none font-bold from-gray-500 to-gray-800 px-6 py-0.5 lg:py-1 "
               type="submit"
             >
               Save
             </button>
           </form>
         </div>
-        <div className="flex flex-col items-center justify-around bg-gradient-to-r from-gray-500 to-gray-800">
-          <h1 className="font-header text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-center">
+        <div className="cols-start-4 col-span-1 xs:col-span-3 flex flex-col items-center justify-around bg-gradient-to-r from-gray-500 to-gray-800">
+          <h1 className="hidden xs:block font-header text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-center">
             GAME of LIFE
           </h1>
 
-          <div className="grid w-3/4 md:w-auto grid-cols-3 gap-10 lg:gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
+          <div className="grid w-full xs:w-3/4 lg:w-auto grid-rows-3 xs:grid-rows-none xs:grid-cols-3 gap-2 pt-1 xs:gap-10 lg:gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
             <button
               className={
-                "flex flex-row md:flex-col text-white items-center justify-around text-xs md:text-sm font-bold xl:border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200  h-10 w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36 " +
-                (continuance ? "bg-gray-800" : "")
+                "flex flex-col text-white items-center justify-around text-xs lg:text-sm font-bold xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36 " +
+                (continuance ? "xl:bg-gray-800" : "")
               }
               onClick={handleBegining}
             >
@@ -225,14 +240,14 @@ const GameOfLife = () => {
               )}
             </button>
             <button
-              className="flex flex-row md:flex-col text-white items-center justify-around text-xs md:text-sm font-bold xl:border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200  h-10 w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-col text-white items-center justify-around text-xs lg:text-sm font-bold xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
               onClick={handleObliviate}
             >
               <FontAwesomeIcon icon={faMeteor} size="3x" />
               <span className="hidden lg:block">Obliviate</span>
             </button>
             <button
-              className="flex flex-row md:flex-col text-white items-center justify-around text-xs md:text-sm font-bold xl:border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200  h-10 w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-col text-white items-center justify-around text-xs lg:text-sm font-bold xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
               onClick={handleRandomize}
             >
               {" "}
@@ -242,11 +257,11 @@ const GameOfLife = () => {
           </div>
         </div>
 
-        <div className="w-full mt-2 md:mt-4 flex flex-col text-sm md:text-base 2xl:text-xl items-center">
-          <h2 className="text-xl md:text-2xl 2xl:text-3xl text-center mb-2 md:mb-6">
+        <div className="cols-start-8 col-span-4 xs:col-span-3 w-full mt-2 lg:mt-4 flex flex-col text-sm lg:text-base 2xl:text-xl items-center">
+          <h2 className="text-xl lg:text-2xl 2xl:text-3xl text-center mb-2 lg:mb-6">
             Live values :
           </h2>
-          <div className="font-semibold  my-2 flex flex-row w-2/3  xl:w-3/5 2xl:w-1/2 justify-between">
+          <div className="font-semibold my-2 flex flex-row w-5/6 xs:w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
             <label htmlFor="cellSize">Cell size:</label>
             <input
               value={values.cellSize}
@@ -254,10 +269,10 @@ const GameOfLife = () => {
               name="cellSize"
               type="number"
               onChange={handleChange}
-              className=" bg-gray-500 text-right w-1/2 focus:outline-none"
+              className=" bg-gray-500 text-right w-2/5 xs:w-1/2 focus:outline-none"
             />
           </div>
-          <div className="font-semibold my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+          <div className="font-semibold my-2 flex flex-row w-5/6 xs:w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
             <label htmlFor="speed">Speed:</label>
             <input
               value={values.speed}
@@ -265,34 +280,34 @@ const GameOfLife = () => {
               id="speed"
               type="number"
               onChange={handleChange}
-              className=" bg-gray-500 text-right w-1/2 focus:outline-none"
+              className=" bg-gray-500 text-right w-2/5 xs:w-1/2 focus:outline-none"
             />
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-r from-gray-500 to-gray-800 w-full h-1 md:h-2"></div>
+      <div className="bg-gradient-to-r from-gray-500 to-gray-800 w-full h-1 lg:h-2"></div>
 
-      <div className="overflow-x-auto min-h-full flex-1 inline-block mt-3 pb-3 md:mt-8 mx-4 md:mx-8">
+      <div className="overflow-x-auto min-h-full flex-1 inline-block mt-3 pb-3 lg:mt-8 mx-4 lg:mx-8">
         <div
           className="grid border border-b-0 border-r-0 border-gray-700 w-max mx-auto"
           style={{
             grid: `repeat(${dimensions.height}, ${values.cellSize}px)/ repeat(${dimensions.width}, ${values.cellSize}px)`,
           }}
         >
-          {renderGrid()}
+          {newGrid}
         </div>
       </div>
       {tutorialToggle && <Tutorial onClick={handleToggle} />}
       <TutorialButton
         className={
-          "transition-all fixed flex flex-col cursor-pointer items-center bottom-5 md:bottom-8 right-5 md:right-12 text-gray-300 font-bold"
+          "transition-all fixed flex flex-col cursor-pointer items-center bottom-5 lg:bottom-8 right-5 lg:right-12 text-gray-300 font-bold"
         }
         text="Tutorial"
         onClick={() => setTutorialToggle(!tutorialToggle)}
       />
       <WikiButton
         className={
-          "fixed flex flex-col items-center bottom-5 md:bottom-8 left-5 text-gray-300 font-bold"
+          "fixed flex flex-col items-center bottom-5 lg:bottom-8 left-5 text-gray-300 font-bold"
         }
         text="Examples of patterns"
         article={"#Examples_of_patterns"}

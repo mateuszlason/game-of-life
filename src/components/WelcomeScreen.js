@@ -15,7 +15,7 @@ const square = (
 
 const WelcomeScreen = () => {
   return (
-    <div className="text-white text-justify text-xl sm:font-text flex justify-center items-center z-0 h-screen overflow-hidden w-full bg-black">
+    <div className="text-white fixed text-justify text-xl sm:font-text flex justify-center items-center z-0 h-screen w-full bg-black">
       <div className="overflow-y-auto lg:w-2/3 xl:w-2/3 2xl:w-3/5 2xl:h-5/6 relative flex p-3 opacity-90 flex-col justify-between 2xl:justify-around items-center h-full z-10 bg-black border-gray-900 border-8 border-opacity-50 rounded-md">
         <WikiButton
           text="Wiki article"
@@ -72,7 +72,7 @@ const WelcomeScreen = () => {
       </div>
 
       <video
-        className="z-0 fixed hidden sm:block"
+        className="z-0 fixed hidden md:block"
         id="background"
         poster="/game-of-life/poster.jpg"
         autoPlay
