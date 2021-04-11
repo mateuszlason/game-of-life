@@ -18,6 +18,7 @@ import Tutorial from "./Tutorial";
 import TutorialButton from "./TutorialButton";
 import WikiButton from "./WikiButton";
 
+console.log("Hello Recruiter! Lookin' sharp as always.. 🤭");
 const GameOfLife = () => {
   const [dimensions, setDimensions] = useState({ height: 30, width: 50 });
   const [tutorialToggle, setTutorialToggle] = useState(true);
@@ -65,8 +66,6 @@ const GameOfLife = () => {
   const renderGrid = useCallback(() => {
     // "x" is row index
     // "y" is column index
-
-    console.log("hehe");
 
     return grid.map((rows, x) =>
       rows.map((cols, y) => (
