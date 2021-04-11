@@ -199,7 +199,7 @@ const GameOfLife = () => {
           </form>
         </div>
         <div className="flex flex-col items-center justify-around bg-gradient-to-r from-gray-500 to-gray-800">
-          <h1 className="font-header text-2xl sm:text-3xl lg:text-5xl text-center">
+          <h1 className="font-header text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-center">
             GAME of LIFE
           </h1>
 

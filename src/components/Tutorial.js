@@ -64,7 +64,7 @@ const Tutorial = ({ onClick }) => {
         >
           Got it!
         </button>
-        <div className="absolute h-8 w-8 border-4 border-l-0 border-t-0 border-white z-30 bottom-2 right-2"></div>
+        <div className="absolute h-8 w-8 md:border-4 md:border-l-0 md:border-t-0 border-white z-30 bottom-2 right-2"></div>
       </div>
     </div>
   );
