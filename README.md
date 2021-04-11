@@ -20,6 +20,8 @@ There's still a lot room for improvement. Because it is not a huge and complicat
 
 I took care of **responsiveness** on all desktop resolutions, also I styled landing page for mobile, but since the game demands quite a big screen, the playground itself does not support mobile resolutions (at least for now).
 
+Edit 1.0 App is now responsive on mobile devices, nevertheless since the game utilizes a lot of computing, for performance reasons it is recommended to use desktop computer.
+
 > Enjoy the game!
 
 ### Which technologies did I use??
