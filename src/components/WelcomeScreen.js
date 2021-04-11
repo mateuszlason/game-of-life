@@ -16,20 +16,20 @@ const square = (
 const WelcomeScreen = () => {
   return (
     <div className="text-white text-justify text-xl sm:font-text flex justify-center items-center z-0 h-screen overflow-hidden w-full bg-black">
-      <div className="lg:w-2/3 xl:w-2/3 2xl:w-3/5 2xl:h-5/6 relative flex p-3 opacity-90 flex-col justify-between 2xl:justify-around items-center h-full z-10 bg-black border-gray-900 border-8 border-opacity-50 rounded-md">
+      <div className="overflow-y-auto lg:w-2/3 xl:w-2/3 2xl:w-3/5 2xl:h-5/6 relative flex p-3 opacity-90 flex-col justify-between 2xl:justify-around items-center h-full z-10 bg-black border-gray-900 border-8 border-opacity-50 rounded-md">
         <WikiButton
           text="Wiki article"
           className={
             "text-gray-300 cursor-pointer w-16 h-16 absolute inset-0 lg:inset-3 2xl:inset-8 flex flex-col justify-center items-center sm:w-28 sm:h-28"
           }
         />
-        <h1 className="text-center font-header my-8 text-5xl xl:text-6xl">
+        <h1 className="text-center font-header my-8 text-4xl sm:text-5xl xl:text-6xl">
           GAME of LIFE
         </h1>
         <h2 className="text-2xl xl:text-3xl 2xl:text-3xl mt-5">
           There are only 4 rules :
         </h2>
-        <ul className="mt-3 ml-2 sm:px-6 md:leading-relaxed md:px-10 2xl:px-20 text-gray-400 text-lg md:text-xl xl:text-xl 2xl:leading-relaxed space-y-4">
+        <ul className="my-5 ml-2 md:my-3 sm:px-6 md:px-10 2xl:px-20 md:leading-relaxed text-gray-400 text-base sm:text-lg md:text-xl 2xl:leading-relaxed space-y-4">
           <li className="inline-flex font-base items-baseline">
             {" "}
             {square}

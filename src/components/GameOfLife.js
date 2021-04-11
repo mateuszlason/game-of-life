@@ -155,19 +155,19 @@ const GameOfLife = () => {
   return (
     <div
       style={{ backgroundImage: `url(/game-of-life/poster.jpg)` }}
-      className="flex flex-col bg-black font-text bg-cover bg-fixed bg-center text-white min-h-screen h-full min-w-full"
+      className="flex flex-col relative bg-black font-text bg-cover bg-fixed bg-center text-white min-h-screen h-full min-w-full"
     >
-      <div className="backdrop-filter backdrop-blur-md grid grid-cols-3 w-full h-48 2xl:h-52">
-        <div className="w-full mt-4">
+      <div className="overflow-x-auto backdrop-filter backdrop-blur-md grid grid-cols-3 w-full h-32 md:h-48 2xl:h-52">
+        <div className="w-full mt-2 md:mt-4">
           {" "}
-          <h2 className="text-2xl 2xl:text-3xl mb-2 text-center">
+          <h2 className="text-xl md:text-2xl 2xl:text-3xl mb-1 md:mb-2 text-center">
             World size :
           </h2>
           <form
-            className="w-full flex flex-col items-center 2xl:text-xl"
+            className="w-full flex flex-col items-center text-sm md:text-base 2xl:text-xl"
             onSubmit={handleSubmit}
           >
-            <div className="font-semibold my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+            <div className="font-semibold my-1 md:my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
               <label htmlFor="gridHeight">Height:</label>
 
               <input
@@ -176,10 +176,10 @@ const GameOfLife = () => {
                 id="gridHeight"
                 type="number"
                 onChange={handleChange}
-                className="ml-2 bg-gray-500 text-right w-1/2 focus:outline-none"
+                className="bg-gray-500 text-right w-1/2 focus:outline-none"
               />
             </div>
-            <div className="font-semibold my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+            <div className="font-semibold my-1 md:my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
               <label htmlFor="gridWidth">Width:</label>
               <input
                 value={values.gridWidth}
@@ -187,11 +187,11 @@ const GameOfLife = () => {
                 id="gridWidth"
                 type="number"
                 onChange={handleChange}
-                className="ml-2 bg-gray-500 text-right w-1/2 focus:outline-none"
+                className="bg-gray-500 text-right w-1/2 focus:outline-none"
               />
             </div>
             <button
-              className="mt-2 bg-gradient-to-r focus:outline-none font-bold from-gray-500 to-gray-800 px-6 py-1 w-2/3 xl:w-3/5 2xl:w-1/2"
+              className="mt-1 md:mt-2 bg-gradient-to-r focus:outline-none font-bold from-gray-500 to-gray-800 px-6 py-0.5 md:py-1 w-2/3 xl:w-3/5 2xl:w-1/2"
               type="submit"
             >
               Save
@@ -199,12 +199,14 @@ const GameOfLife = () => {
           </form>
         </div>
         <div className="flex flex-col items-center justify-around bg-gradient-to-r from-gray-500 to-gray-800">
-          <h1 className=" font-header text-5xl text-center">GAME of LIFE</h1>
+          <h1 className="font-header text-2xl sm:text-3xl lg:text-5xl text-center">
+            GAME of LIFE
+          </h1>
 
-          <div className="grid grid-cols-3 gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
+          <div className="grid w-3/4 md:w-auto grid-cols-3 gap-10 lg:gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
             <button
               className={
-                "flex flex-col text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200 justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36 " +
+                "flex flex-row md:flex-col text-white items-center justify-around text-xs md:text-sm font-bold xl:border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200  h-10 w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36 " +
                 (continuance ? "bg-gray-800" : "")
               }
               onClick={handleBegining}
@@ -213,38 +215,38 @@ const GameOfLife = () => {
               {continuance ? (
                 <>
                   <FontAwesomeIcon icon={faHourglassHalf} size="3x" />
-                  Restrain
+                  <span className="hidden lg:block">Restrain</span>
                 </>
               ) : (
                 <>
                   <FontAwesomeIcon icon={faFlagCheckered} size="3x" />
-                  Initiate
+                  <span className="hidden lg:block">Initiate</span>
                 </>
               )}
             </button>
             <button
-              className="flex flex-col text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200 justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-row md:flex-col text-white items-center justify-around text-xs md:text-sm font-bold xl:border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200  h-10 w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
               onClick={handleObliviate}
             >
               <FontAwesomeIcon icon={faMeteor} size="3x" />
-              Obliviate
+              <span className="hidden lg:block">Obliviate</span>
             </button>
             <button
-              className="flex flex-col text-white items-center text-sm font-bold border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200 justify-around h-20 w-28  2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-row md:flex-col text-white items-center justify-around text-xs md:text-sm font-bold xl:border-2 rounded-xl hover:bg-gray-900 focus:outline-none border-gray-200  h-10 w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
               onClick={handleRandomize}
             >
               {" "}
               <FontAwesomeIcon icon={faDice} size="3x" />
-              Scattershot
+              <span className="hidden lg:block">Scattershot</span>
             </button>
           </div>
         </div>
 
-        <div className="w-full mt-4 flex flex-col items-center">
-          <h2 className="text-2xl 2xl:text-3xl text-center mb-6">
+        <div className="w-full mt-2 md:mt-4 flex flex-col text-sm md:text-base 2xl:text-xl items-center">
+          <h2 className="text-xl md:text-2xl 2xl:text-3xl text-center mb-2 md:mb-6">
             Live values :
           </h2>
-          <div className="font-semibold 2xl:text-xl my-2 flex flex-row w-2/3  xl:w-3/5 2xl:w-1/2 justify-between">
+          <div className="font-semibold  my-2 flex flex-row w-2/3  xl:w-3/5 2xl:w-1/2 justify-between">
             <label htmlFor="cellSize">Cell size:</label>
             <input
               value={values.cellSize}
@@ -252,10 +254,10 @@ const GameOfLife = () => {
               name="cellSize"
               type="number"
               onChange={handleChange}
-              className="ml-2  bg-gray-500 text-right focus:outline-none md:w-1/2"
+              className=" bg-gray-500 text-right w-1/2 focus:outline-none"
             />
           </div>
-          <div className="font-semibold my-2 2xl:text-xl flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+          <div className="font-semibold my-2 flex flex-row w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
             <label htmlFor="speed">Speed:</label>
             <input
               value={values.speed}
@@ -263,14 +265,14 @@ const GameOfLife = () => {
               id="speed"
               type="number"
               onChange={handleChange}
-              className="ml-2 bg-gray-500 text-right focus:outline-none md:w-1/2"
+              className=" bg-gray-500 text-right w-1/2 focus:outline-none"
             />
           </div>
         </div>
       </div>
-      <div className="bg-gradient-to-r from-gray-500 to-gray-800 w-full h-2"></div>
+      <div className="bg-gradient-to-r from-gray-500 to-gray-800 w-full h-1 md:h-2"></div>
 
-      <div className="overflow-x-auto min-h-full flex-1 inline-block mt-8 mx-8">
+      <div className="overflow-x-auto min-h-full flex-1 inline-block mt-3 pb-3 md:mt-8 mx-4 md:mx-8">
         <div
           className="grid border border-b-0 border-r-0 border-gray-700 w-max mx-auto"
           style={{
@@ -283,14 +285,14 @@ const GameOfLife = () => {
       {tutorialToggle && <Tutorial onClick={handleToggle} />}
       <TutorialButton
         className={
-          "transition-all fixed flex flex-col cursor-pointer items-center bottom-8 right-12 text-gray-300 font-bold"
+          "transition-all fixed flex flex-col cursor-pointer items-center bottom-5 md:bottom-8 right-5 md:right-12 text-gray-300 font-bold"
         }
         text="Tutorial"
         onClick={() => setTutorialToggle(!tutorialToggle)}
       />
       <WikiButton
         className={
-          "fixed flex flex-col items-center bottom-8 left-5 text-gray-300 font-bold"
+          "fixed flex flex-col items-center bottom-5 md:bottom-8 left-5 text-gray-300 font-bold"
         }
         text="Examples of patterns"
         article={"#Examples_of_patterns"}
