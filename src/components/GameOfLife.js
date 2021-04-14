@@ -178,10 +178,10 @@ const GameOfLife = () => {
             World size :
           </h2>
           <form
-            className="w-5/6 xs:w-2/3 xl:w-3/5 2xl:w-1/2 flex flex-col text-sm lg:text-base 2xl:text-xl"
+            className="w-5/6 xs:w-2/3  xl:w-3/5 2xl:w-1/2 flex flex-col text-sm lg:text-base 2xl:text-xl"
             onSubmit={handleSubmit}
           >
-            <div className="font-semibold my-1 lg:my-2 flex flex-row justify-between">
+            <div className="my-1 font-normal lg:my-2 flex flex-row justify-between">
               <label htmlFor="gridHeight">Height:</label>
 
               <input
@@ -193,7 +193,7 @@ const GameOfLife = () => {
                 className="bg-gray-500 text-right w-1/2 focus:outline-none"
               />
             </div>
-            <div className="font-semibold my-1 lg:my-2 flex flex-row justify-between">
+            <div className="my-1 lg:my-2 flex flex-row justify-between">
               <label htmlFor="gridWidth">Width:</label>
               <input
                 value={values.gridWidth}
@@ -220,7 +220,7 @@ const GameOfLife = () => {
           <div className="grid w-full xs:w-3/4 lg:w-auto grid-rows-3 xs:grid-rows-none xs:grid-cols-3 gap-2 pt-1 xs:gap-10 lg:gap-3 xl:gap-8 2xl:mt-2 2xl:gap-10">
             <button
               className={
-                "flex flex-col text-white items-center justify-around text-xs lg:text-sm font-bold xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36 " +
+                "flex flex-col text-white items-center justify-around xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 xl:h-24 2xl:text-xl 2xl:h-28 2xl:w-36 " +
                 (continuance ? "xl:bg-gray-800" : "")
               }
               onClick={handleBegining}
@@ -228,29 +228,41 @@ const GameOfLife = () => {
               {" "}
               {continuance ? (
                 <>
-                  <FontAwesomeIcon icon={faHourglassHalf} size="3x" />
+                  <FontAwesomeIcon
+                    className="text-3xl xs:text-4xl 2xl:text-5xl"
+                    icon={faHourglassHalf}
+                  />
                   <span className="hidden lg:block">Restrain</span>
                 </>
               ) : (
                 <>
-                  <FontAwesomeIcon icon={faFlagCheckered} size="3x" />
+                  <FontAwesomeIcon
+                    className="text-3xl xs:text-4xl 2xl:text-5xl"
+                    icon={faFlagCheckered}
+                  />
                   <span className="hidden lg:block">Initiate</span>
                 </>
               )}
             </button>
             <button
-              className="flex flex-col text-white items-center justify-around text-xs lg:text-sm font-bold xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-col text-white items-center justify-around xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 xl:h-24 2xl:text-xl 2xl:h-28 2xl:w-36"
               onClick={handleObliviate}
             >
-              <FontAwesomeIcon icon={faMeteor} size="3x" />
+              <FontAwesomeIcon
+                className="text-3xl xs:text-4xl 2xl:text-5xl"
+                icon={faMeteor}
+              />
               <span className="hidden lg:block">Obliviate</span>
             </button>
             <button
-              className="flex flex-col text-white items-center justify-around text-xs lg:text-sm font-bold xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 2xl:text-lg 2xl:h-28 2xl:w-36"
+              className="flex flex-col text-white items-center justify-around xl:border rounded-xl xl:hover:bg-gray-900 focus:outline-none border-gray-200 xs:w-full lg:h-20 lg:w-28 xl:h-24 2xl:text-xl 2xl:h-28 2xl:w-36"
               onClick={handleRandomize}
             >
               {" "}
-              <FontAwesomeIcon icon={faDice} size="3x" />
+              <FontAwesomeIcon
+                className="text-3xl xs:text-4xl 2xl:text-5xl"
+                icon={faDice}
+              />
               <span className="hidden lg:block">Scattershot</span>
             </button>
           </div>
@@ -260,7 +272,7 @@ const GameOfLife = () => {
           <h2 className="text-xl lg:text-2xl 2xl:text-3xl text-center mb-2 lg:mb-6">
             Live values :
           </h2>
-          <div className="font-semibold my-2 flex flex-row w-5/6 xs:w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+          <div className="my-2 flex flex-row w-5/6 md:w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
             <label htmlFor="cellSize">Cell size:</label>
             <input
               value={values.cellSize}
@@ -268,10 +280,10 @@ const GameOfLife = () => {
               name="cellSize"
               type="number"
               onChange={handleChange}
-              className=" bg-gray-500 text-right w-2/5 xs:w-1/2 focus:outline-none"
+              className=" bg-gray-500 text-right w-2/5 xs:w-2/5 md:w-1/2 focus:outline-none"
             />
           </div>
-          <div className="font-semibold my-2 flex flex-row w-5/6 xs:w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
+          <div className="my-2 flex flex-row w-5/6 md:w-2/3 xl:w-3/5 2xl:w-1/2 justify-between">
             <label htmlFor="speed">Speed:</label>
             <input
               value={values.speed}
@@ -279,7 +291,7 @@ const GameOfLife = () => {
               id="speed"
               type="number"
               onChange={handleChange}
-              className=" bg-gray-500 text-right w-2/5 xs:w-1/2 focus:outline-none"
+              className=" bg-gray-500 text-right w-2/5 md:w-1/2 focus:outline-none"
             />
           </div>
         </div>

@@ -5,21 +5,25 @@
 @layer base {
   @font-face {
     font-family: Nokian;
-    src: local("Nokian"), url(./fonts/Nokian.ttf) format("truetype");
-  }
-  @font-face {
-    font-family: Bloxat;
-    src: local("Bloxat"), url(./fonts/Bloxat.ttf) format("truetype");
+    src: url(./fonts/Nokian.ttf) format("truetype");
   }
   @font-face {
     font-family: McFont;
-    src: local("McFont"), url(./fonts/McFont.otf) format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    src: url(./fonts/McFont.otf) format("opentype");
+  }
+  @font-face {
+    font-family: McFont;
+    font-style: normal;
+    font-weight: 700;
+    src: url(./fonts/McFontBold.otf) format("opentype");
   }
 }
 
 @layer base {
   b {
-    @apply text-gray-200;
+    @apply text-white font-normal;
   }
 }
 

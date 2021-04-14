@@ -16,7 +16,7 @@ const Tutorial = ({ onClick }) => {
     <div className="min-h-screen font-text min-w-full flex justify-center items-center z-20 fixed backdrop-filter backdrop-blur-sm">
       <div className="fixed overflow-y-auto pb-32 sm:pb-16 pt-6 px-5 lg:p-3 z-30 w-screen md:w-4/5 lg:w-3/5 xl:w-1/2 h-screen lg:h-5/6 xl:h-4/5 flex flex-col lg:justify-around items-center  opacity-90 bg-black border-gray-900 border-2 md:border-8 border-opacity-50 rounded-md">
         <h2 className="my-5 lg:m-0 text-2xl 2xl:text-4xl">Tutorial</h2>
-        <ul className="text-sm text-justify xl:text-base 2xl:text-lg font-bold text-gray-400 px-2 md:px-3 lg:px-6 space-y-5 lg:space-y-3 2xl:space-y-5 leading-relaxed">
+        <ul className="text-sm text-justify xl:text-lg 2xl:text-xl text-gray-400 px-2 md:px-3 lg:px-6 space-y-5 lg:space-y-3 2xl:space-y-5 leading-relaxed">
           <li className="inline-flex items-baseline">
             {square}
             <p>
@@ -25,7 +25,7 @@ const Tutorial = ({ onClick }) => {
               resolution by using <b>width</b>.
             </p>
           </li>
-          <p className="text-xs 2xl:text-sm text-gray-200 2xl:font-semibold text-center">
+          <p className="text-sm 2xl:text-md text-gray-200 text-center">
             (Remember to press Save! This will re-generate the world.)
           </p>
           <li className="inline-flex items-baseline">
@@ -53,13 +53,13 @@ const Tutorial = ({ onClick }) => {
             </p>
           </li>
 
-          <p className="text-gray-200 text-center">
+          <p className="text-gray-200 font-normal text-center">
             You can bring into being as many cells as you like, but the trick is
             to form a sustainable life using only a few of them!
           </p>
         </ul>
         <button
-          className="my-5 lg:my-0 bg-gradient-to-r 2xl:font-bold from-gray-500 to-gray-800 focus:outline-none py-2 2xl:py-3 w-2/3 xl:w-3/5 2xl:w-1/2"
+          className="my-5 lg:my-0 bg-gradient-to-r 2xl:text-xl 2xl:font-bold from-gray-500 to-gray-800 focus:outline-none py-2 2xl:py-3 w-2/3 xl:w-3/5 2xl:w-1/2"
           onClick={onClick}
         >
           Got it!

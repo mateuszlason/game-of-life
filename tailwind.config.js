@@ -15,8 +15,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        header: ["Nokian"],
-        text: ["McFont"],
+        header: ["Nokian", "sans-serif"],
+        text: ["McFont", "sans-serif"],
       },
     },
   },
