@@ -311,16 +311,16 @@ const GameOfLife = () => {
       {tutorialToggle && <Tutorial onClick={handleToggle} />}
       <TutorialButton
         className={
-          "transition-all fixed flex flex-col cursor-pointer items-center bottom-5 lg:bottom-8 right-5 lg:right-12 text-gray-300 font-bold"
+          "fixed flex flex-col cursor-pointer items-center bottom-5 right-5 lg:bottom-8 lg:right-12 text-gray-300 font-bold"
         }
         text="Tutorial"
         onClick={() => setTutorialToggle(!tutorialToggle)}
       />
       <WikiButton
         className={
-          "fixed flex flex-col items-center bottom-5 lg:bottom-8 left-5 text-gray-300 font-bold"
+          "fixed flex flex-col items-center bottom-5 left-5 lg:bottom-8 lg:left-12 text-gray-300 font-bold"
         }
-        text="Examples of patterns"
+        text="Patterns"
         article={"#Examples_of_patterns"}
       />
     </div>
