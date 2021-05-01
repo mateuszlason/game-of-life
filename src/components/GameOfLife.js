@@ -189,6 +189,8 @@ const GameOfLife = () => {
                 name="gridHeight"
                 id="gridHeight"
                 type="number"
+                min="15"
+                max="250"
                 onChange={handleChange}
                 className="bg-gray-500 text-right w-1/2 focus:outline-none"
               />
@@ -199,6 +201,8 @@ const GameOfLife = () => {
                 value={values.gridWidth}
                 name="gridWidth"
                 id="gridWidth"
+                min="15"
+                max="250"
                 type="number"
                 onChange={handleChange}
                 className="bg-gray-500 text-right w-1/2 focus:outline-none"
@@ -278,6 +282,8 @@ const GameOfLife = () => {
               value={values.cellSize}
               id="cellSize"
               name="cellSize"
+              min="1"
+              max="250"
               type="number"
               onChange={handleChange}
               className=" bg-gray-500 text-right w-2/5 xs:w-2/5 md:w-1/2 focus:outline-none"
@@ -288,6 +294,8 @@ const GameOfLife = () => {
             <input
               value={values.speed}
               name="speed"
+              min="0"
+              max="2000"
               id="speed"
               type="number"
               onChange={handleChange}

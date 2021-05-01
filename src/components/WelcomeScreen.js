@@ -65,7 +65,7 @@ const WelcomeScreen = () => {
           to="/game-of-life/play"
         >
           {" "}
-          <button className="transition duration-150 transform hover:translate-y-1 hover:scale-105 w-full h-full text-xl 2xl:text-2xl bg-gradient-to-r from-gray-500 to-gray-800">
+          <button className="transition duration-100 transform focus:outline-none hover:translate-y-1 hover:scale-105 w-full h-full text-xl 2xl:text-2xl bg-gradient-to-r from-gray-500 to-gray-800">
             Begin
           </button>
         </Link>
@@ -73,7 +73,6 @@ const WelcomeScreen = () => {
 
       <video
         className="z-0 fixed hidden md:block"
-        id="background"
         poster="/game-of-life/poster.jpg"
         autoPlay
         muted
